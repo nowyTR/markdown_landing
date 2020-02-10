@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { Flex, Heading, Box, Button } from 'rebass'
+import { Heading, Button } from 'rebass'
 import { useAuth } from 'react-use-auth'
 
 import Layout from '../components/layout'
