@@ -3,7 +3,7 @@ import { Heading, Button } from 'rebass'
 import { useAuth } from 'react-use-auth'
 import { graphql, useStaticQuery } from 'gatsby'
 import { useQuery } from 'react-apollo-hooks'
-import gql from 'graphql-tag'
+import { gql } from 'apollo-boost'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
