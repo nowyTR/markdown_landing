@@ -146,7 +146,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/markdownLanding/dev/1581338756788-2020-02-10T12:45:56.788Z/markdownLanding.zip"
+          "S3Key": "serverless/markdownLanding/dev/1581423157909-2020-02-11T12:12:37.909Z/markdownLanding.zip"
         },
         "FunctionName": "markdownLanding-dev-graphql",
         "Handler": "dist/graphql.handler",
@@ -165,14 +165,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GraphqlLambdaVersionWVr60mXCujZqdHWkxcGpJHHhenVtBqGojLHAkNuVfPk": {
+    "GraphqlLambdaVersionoUYM6L9RXHK3ZPP29Y0sWAuxH4ZAb6xZ9pzKyrgc1Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "bHT0zME0T02HboYECW2fbqL0ox45FqyVk8ABB96vA8o="
+        "CodeSha256": "Nwnp8USvvVaB5DB1ciP76mawuPuzfQgh3SDEKc+e/wI="
       }
     },
     "ApiGatewayRestApi": {
@@ -333,7 +333,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1581338743336": {
+    "ApiGatewayDeployment1581423144892": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -394,7 +394,7 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionWVr60mXCujZqdHWkxcGpJHHhenVtBqGojLHAkNuVfPk"
+        "Ref": "GraphqlLambdaVersionoUYM6L9RXHK3ZPP29Y0sWAuxH4ZAb6xZ9pzKyrgc1Y"
       }
     },
     "ServiceEndpoint": {

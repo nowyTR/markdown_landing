@@ -39,9 +39,9 @@ module.exports = {
       resolve: 'gatsby-source-graphql',
       options: {
         // This type will contain remote schema Query type
-        typeName: 'API',
+        typeName: 'MDLAPI',
         // This is the field under which it's accessible
-        fieldName: 'api',
+        fieldName: 'mdlapi',
         // URL to query from
         url: process.env.API_URL
       }
