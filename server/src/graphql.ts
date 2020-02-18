@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server-lambda'
+import { updateUser } from './mutations'
 
 // The shape of API
 const schema = gql`
@@ -9,6 +10,16 @@ const schema = gql`
   type Hello {
     world: String
   }
+
+  type User {
+    userId: String!
+    createdAt: String
+    lastSignedInAt: String
+  }
+
+  type Mutation {
+    updateUser(userId: String): User
+  }
 `
 
 // map shape to functions
@@ -17,6 +28,9 @@ const resolvers = {
     hello: () => ({
       world: 'Hello Dank memers 123'
     })
+  },
+  Mutation: {
+    updateUser
   }
 }
 
