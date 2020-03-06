@@ -1,4 +1,39 @@
 import { getItem, updateItem } from 'simple-dynamodb'
+import { v4 as uuidv4 } from 'uuid'
+
+type PageParams = {
+  userId: string
+  pageName: string
+}
+
+async function createPage(parent, args): Promise<LandingPage> {
+  const pageId = uuidv4()
+  const { userId, pageName } = args
+  const result = await updateItem({
+    TableName: process.env.PAGE_TABLE!,
+    Key: {
+      userId,
+      pageId
+    },
+    UpdateExpression: 'SET pageName = :pageName, createdAt = :createdAt',
+    ExpressionAttributeValues: {
+      ':pageName': pageName,
+      ':createdAt': new Date().toISOString()
+    },
+    ReturnValues: 'ALL_NEW'
+  })
+
+  const page = result.Attributes
+
+  return {
+    userId,
+    pageId: page ? page.pageId : null,
+    createdAt: page ? page.createdAt : null,
+    lastUpdatedAt: page ? page.createdAt : null,
+    pageName: page ? page.pageName : null,
+    content: ''
+  }
+}
 
 type UserParams = {
   userId: string
@@ -53,4 +88,4 @@ async function updateUser(parent, args: UserParams): Promise<User> {
   }
 }
 
-export { updateUser }
+export { updateUser, createPage }

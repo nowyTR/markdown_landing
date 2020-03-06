@@ -10,7 +10,8 @@
       "name": "aws",
       "runtime": "nodejs12.x",
       "environment": {
-        "USER_TABLE": "markdownLanding-users-dev"
+        "USER_TABLE": "markdownLanding-users-dev",
+        "PAGE_TABLE": "markdownLanding-pages-dev"
       },
       "iamRoleStatements": [
         {
@@ -24,6 +25,18 @@
             "dynamodb:DeleteItem"
           ],
           "Resource": "arn:aws:dynamodb:us-east-1:*:table/markdownLanding-users-dev"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "dynamodb:Query",
+            "dynamodb:Scan",
+            "dynamodb:GetItem",
+            "dynamodb:PutItem",
+            "dynamodb:UpdateItem",
+            "dynamodb:DeleteItem"
+          ],
+          "Resource": "arn:aws:dynamodb:us-east-1:*:table/markdownLanding-pages-dev"
         }
       ],
       "region": "us-east-1",
@@ -152,6 +165,9 @@
                       },
                       {
                         "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][1]"
                       }
                     ]
                   }
@@ -180,7 +196,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/markdownLanding/dev/1582039524652-2020-02-18T15:25:24.652Z/markdownLanding.zip"
+                "S3Key": "serverless/markdownLanding/dev/1583417467298-2020-03-05T14:11:07.298Z/markdownLanding.zip"
               },
               "FunctionName": "markdownLanding-dev-graphql",
               "Handler": "dist/graphql.handler",
@@ -195,7 +211,8 @@
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "USER_TABLE": "markdownLanding-users-dev"
+                  "USER_TABLE": "markdownLanding-users-dev",
+                  "PAGE_TABLE": "markdownLanding-pages-dev"
                 }
               }
             },
@@ -204,14 +221,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GraphqlLambdaVersion3S4UfS72xtTjYcQploxvwPFfgmIUG9oa60GMpqrWw": {
+          "GraphqlLambdaVersionK7NH3o3tUhrKjH9cxXNoyGPWSiAi9a6KiVVuspROzO4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "KAFwienuRYWHBX21Ni4f8FT+PUmjWItzS5d95+k0cHw="
+              "CodeSha256": "orcPm1rVLRvsmwIGSLGpMZOsjdaKL45tmoL3o8n+acA="
             }
           },
           "ApiGatewayRestApi": {
@@ -372,7 +389,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1582039511138": {
+          "ApiGatewayDeployment1583417454261": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -444,6 +461,36 @@
               },
               "TableName": "markdownLanding-users-dev"
             }
+          },
+          "PagesTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "userId",
+                  "AttributeType": "S"
+                },
+                {
+                  "AttributeName": "pageId",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "userId",
+                  "KeyType": "HASH"
+                },
+                {
+                  "AttributeName": "pageId",
+                  "KeyType": "RANGE"
+                }
+              ],
+              "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              },
+              "TableName": "markdownLanding-pages-dev"
+            }
           }
         },
         "Outputs": {
@@ -455,7 +502,7 @@
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersion3S4UfS72xtTjYcQploxvwPFfgmIUG9oa60GMpqrWw"
+              "Ref": "GraphqlLambdaVersionK7NH3o3tUhrKjH9cxXNoyGPWSiAi9a6KiVVuspROzO4"
             }
           },
           "ServiceEndpoint": {
@@ -616,7 +663,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GraphqlLambdaVersion3S4UfS72xtTjYcQploxvwPFfgmIUG9oa60GMpqrWw"
+        "versionLogicalId": "GraphqlLambdaVersionK7NH3o3tUhrKjH9cxXNoyGPWSiAi9a6KiVVuspROzO4"
       }
     },
     "resources": {
@@ -642,6 +689,36 @@
             },
             "TableName": "markdownLanding-users-dev"
           }
+        },
+        "PagesTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "userId",
+                "AttributeType": "S"
+              },
+              {
+                "AttributeName": "pageId",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "userId",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "pageId",
+                "KeyType": "RANGE"
+              }
+            ],
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1
+            },
+            "TableName": "markdownLanding-pages-dev"
+          }
         }
       },
       "Outputs": {}
@@ -652,7 +729,7 @@
     "artifact": "/home/nowy/dev/markdown_landing/server/.serverless/markdownLanding.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/markdownLanding/dev/1582039524652-2020-02-18T15:25:24.652Z",
+    "artifactDirectoryName": "serverless/markdownLanding/dev/1583417467298-2020-03-05T14:11:07.298Z",
     "artifact": "markdownLanding.zip"
   }
 }

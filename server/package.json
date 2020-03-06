@@ -9,13 +9,15 @@
     "@types/aws-lambda": "^8.10.40",
     "@types/aws-sdk": "^2.7.0",
     "@types/node-fetch": "^2.5.4",
+    "@types/uuid": "^7.0.0",
     "apollo-server": "^2.10.0",
     "apollo-server-lambda": "^2.10.0",
     "aws-lambda": "^1.0.5",
     "aws-sdk": "^2.614.0",
     "graphql": "^14.6.0",
     "simple-dynamodb": "^1.0.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "uuid": "^7.0.2"
   },
   "scripts": {
     "build": "tsc",
