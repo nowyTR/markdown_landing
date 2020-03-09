@@ -4,7 +4,7 @@ import { Button } from 'rebass'
 import UseUpdateUser from '../hooks/useUpdateUser'
 
 function AuthController() {
-  const { login, logout, user, userId, isAuthenticated } = useAuth()
+  const { login, logout, userId, isAuthenticated } = useAuth()
   UseUpdateUser(userId)
 
   return isAuthenticated() ? (

@@ -1,7 +1,13 @@
 import { getItem, updateItem } from 'simple-dynamodb'
 import { v4 as uuidv4 } from 'uuid'
 
-async function savePage(parent, args): Promise<LandingPage> {
+type SavePageParams = {
+  userId: string
+  pageId: string
+  content: string
+}
+
+async function savePage(parent, args: SavePageParams): Promise<LandingPage> {
   const { userId, pageId, content } = args
   const result = await updateItem({
     TableName: process.env.PAGE_TABLE!,

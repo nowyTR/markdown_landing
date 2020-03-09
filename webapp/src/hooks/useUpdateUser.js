@@ -19,6 +19,7 @@ function UseUpdateUser(userId) {
     if (userId != null) {
       updateUser({ variables: { userId: userId } })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 }
 
