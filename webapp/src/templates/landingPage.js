@@ -7,6 +7,8 @@ import useContentFromServer from '../hooks/useContentFromServer'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+console.log('landingPageFile')
+
 function LandingPage({ pageContext }) {
   const { pageName, pageId, userId } = pageContext
   const [content, setContent] = React.useState(pageContext.content || '')

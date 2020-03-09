@@ -13,14 +13,16 @@ import { AuthProvider } from 'react-use-auth'
 import { ApolloProvider } from 'react-apollo-hooks'
 import { client } from './src/apollo'
 
-export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>
-    <AuthProvider
-      navigate={navigate}
-      auth0_domain={process.env.AUTH0_DOMAIN}
-      auth0_client_id={process.env.AUTH0_CLIENT_ID}
-    >
-      {element}
-    </AuthProvider>
-  </ApolloProvider>
-)
+export const wrapRootElement = ({ element }) => {
+  return (
+    <ApolloProvider client={client}>
+      <AuthProvider
+        navigate={navigate}
+        auth0_domain={process.env.GATSBY_AUTH0_DOMAIN}
+        auth0_client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
+      >
+        {element}
+      </AuthProvider>
+    </ApolloProvider>
+  )
+}

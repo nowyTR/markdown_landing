@@ -5,7 +5,7 @@ const path = require('path')
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// creating static pages for every entry grom dataset
+// creating static pages for every entry from dataset
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     query {
@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   result.data.mdlapi.allPages.forEach(({ pageId, userId, pageName, content }) => {
-    const landingPagePath = path.resolve('./src/pages/landingPage.js')
+    const landingPagePath = path.resolve(__dirname, 'src/templates/landingPage.js')
     actions.createPage({
       path: `/${pageId}`,
       component: landingPagePath,
@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
         userId,
         pageId,
         pageName,
-        content
+        content: content || ''
       }
     })
   })

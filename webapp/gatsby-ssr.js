@@ -17,8 +17,8 @@ export const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>
     <AuthProvider
       navigate={navigate}
-      auth0_domain={process.env.AUTH0_DOMAIN}
-      auth0_client_id={process.env.AUTH0_CLIENT_ID}
+      auth0_domain={process.env.GATSBY_AUTH0_DOMAIN}
+      auth0_client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
     >
       {element}
     </AuthProvider>

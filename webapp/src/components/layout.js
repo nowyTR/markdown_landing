@@ -13,16 +13,14 @@ import './layout.css'
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <Box m={[3, 4, 5]} mt={[2, 3, 4]}>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </Box>
-    </>
+    <Box m={[3, 4, 5]} mt={[2, 3, 4]}>
+      <main>{children}</main>
+      <footer>
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </footer>
+    </Box>
   )
 }
 

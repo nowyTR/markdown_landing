@@ -56,8 +56,6 @@ function Dashboard() {
     createPage({ variables: { userId: user.sub, pageName: data.name } })
   }
 
-  console.log(data)
-
   return (
     <Box m={[2, 3, 4]}>
       <p>
