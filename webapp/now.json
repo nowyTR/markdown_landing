@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "AUTH0_DOMAIN": "markdownlanding.eu.auth0.com",
+      "AUTH0_CLIENT_ID": "Rouf1jEtWEr1VoY3cpTTUfZC7YuxqY36",
+      "API_URL": "https://y2w0ds4726.execute-api.us-east-1.amazonaws.com/dev/graphql"
+    }
+  }
+}
